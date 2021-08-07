@@ -4,7 +4,7 @@ import axios from 'axios';
 // export const baseURL = "http://localhost:8000/api"
 
 // production env base url
-export const baseURL = "https://food-delevery.herokuapp.com/api"
+export const baseURL = "http://127.0.0.1:8000/api"
 
 const Api = axios.create({
   baseURL,

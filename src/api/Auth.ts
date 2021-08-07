@@ -4,7 +4,7 @@ const route = '/users'
 
 export default {
   register(user: any) {
-    return Api.post(`${route}/register`, user);
+    return Api.post(`${route}/register/`, user);
   },
   login(user: {email: string, password: string}) {
     return Api.post(`${route}/login/`, user);

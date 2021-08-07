@@ -13,7 +13,16 @@
         flat
         solo-inverted
         append-icon="mdi-account"
-        label="Name"
+        label="Username"
+        required
+      ></v-text-field>
+      <v-text-field
+        v-model="fullname"
+        :rules="fullnameRules"
+        flat
+        solo-inverted
+        append-icon="mdi-account"
+        label="Full Name"
         required
       ></v-text-field>
       <v-text-field
@@ -98,12 +107,17 @@ export default {
     name: "",
     nameRules: [
       v => !!v || 'Name is required',
-      v => (v && v.length <= 10) || 'Name must be less than 10 characters',
+      v => (v && v.length >= 2) || 'Name must be greater than 2 characters',
     ],
     phone: "",
-    phoneRUle: [
+    phoneRules: [
       v => !!v || 'Name is required',
-      v => (v && v.length <= 10) || 'Name must be less than 10 characters',
+      v => (v && v.length >= 2) || 'Phone must be greater than 6 characters',
+    ],
+    fullname: "",
+    fullnameRules: [
+      v => !!v || 'Name is required',
+      v => (v && v.length >= 2) || 'Phone must be greater than 6 characters',
     ],
     email: '',
     emailRules: [
@@ -119,8 +133,10 @@ export default {
       const user = {
         "username": this.name,
         "email": this.email,
+        "phone_number": this.phone,
         "password1": this.password,
         "password2": this.password,
+        "full_name": this.fullname
       }
 
       this.loading = true;
